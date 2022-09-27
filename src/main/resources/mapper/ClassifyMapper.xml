@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lss.mapper.ClassifyMapper">
+
+    <select id="queryClassifyWithNum" resultType="com.lss.domain.vo.ClassifyVo">
+        SELECT classify_id,
+               classify_name,
+               upt_act,
+               created_time,
+               updated_time,
+               user_id,
+               (
+                   SELECT COUNT(*)
+                   FROM list
+                   WHERE classify_id = classify.classify_id and upt_act in("U","I")
+               ) num
+        FROM classify
+                 ${ew.customSqlSegment}
+    </select>
+</mapper>

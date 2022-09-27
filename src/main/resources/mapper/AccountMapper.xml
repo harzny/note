@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lss.mapper.AccountMapper">
+
+    <resultMap id="NoteListVoResult" type="com.lss.domain.vo.AccountVo">
+        <id property="createdTime" column="created_time"/>
+        <collection property="list" ofType="com.lss.domain.entity.Account">
+            <id property="id" column="id"></id>
+            <id property="monomial" column="monomial"></id>
+            <id property="price" column="price"></id>
+            <id property="uptAct" column="upt_act"></id>
+            <id property="createdTime" column="created_time"/>
+            <id property="updatedTime" column="updated_time"/>
+            <id property="userId" column="user_id"/>
+
+        </collection>
+    </resultMap>
+
+    <select id="getAccountList" resultMap="NoteListVoResult">
+        SELECT *
+        FROM account
+    </select>
+
+
+</mapper>

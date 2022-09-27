@@ -1,0 +1,30 @@
+
+server:
+  port:
+    8088
+  servlet:
+    context-path: /notes
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/notes?userSSL=false;serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  #设置上传图片的最大值
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+mybatis-plus:
+  # mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  # # resultType别名，没有这个配置resultType包名要写全，配置后只要写类名
+  type-aliases-package: com.lss.domain.vo
+  #打印出数据库操作的日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  global-config:
+#    db-config:
+#      logic-delete-field: upt_act # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+#      logic-delete-value: D # 逻辑已删除值(默认为 1)
+#      logic-not-delete-value: U # 逻辑未删除值(默认为 0)
